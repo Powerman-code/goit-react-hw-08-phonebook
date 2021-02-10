@@ -1,8 +1,9 @@
 import React from 'react';
+import s from './HomeView.module.css';
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
+  <div className={s.container}>
+    <h1 className={s.title}>
       Приветственная страница нашего сервиса{' '}
       <span role="img" aria-label="Иконка приветствия">
         💁‍♀️

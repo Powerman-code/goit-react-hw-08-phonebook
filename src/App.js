@@ -6,7 +6,7 @@ import HomeView from './views/HomeView/HomeView';
 import RegisterView from './views/RegisterView/RegisterView';
 import LoginView from './views/LoginView/LoginView';
 import Container from './components/Container/Container';
-import { authOperations } from './redux/auth';
+import authOperations from './redux/auth/auth-operations';
 
 export default function App() {
   const dispatch = useDispatch();
