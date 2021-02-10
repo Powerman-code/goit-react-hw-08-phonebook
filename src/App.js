@@ -5,6 +5,7 @@ import AppBar from './components/AppBar/AppBar';
 import HomeView from './views/HomeView/HomeView';
 import RegisterView from './views/RegisterView/RegisterView';
 import LoginView from './views/LoginView/LoginView';
+import ContactsView from './views/ContactsView/ContactsView';
 import Container from './components/Container/Container';
 import authOperations from './redux/auth/auth-operations';
 
@@ -23,7 +24,7 @@ export default function App() {
         <Route exact path="/" component={HomeView} />
         <Route path="/register" component={RegisterView} />
         <Route path="/login" component={LoginView} />
-        {/* <Route path="/contacts" component={ContactsView} /> */}
+        <Route path="/contacts" component={ContactsView} />
       </Switch>
     </Container>
   );

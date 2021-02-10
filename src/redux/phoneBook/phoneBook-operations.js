@@ -14,12 +14,11 @@ import {
   changeFilter,
 } from '../phoneBook/phoneBook-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 
 export const fetchContacts = () => async dispatch => {
+  dispatch(fetchContactsRequest());
   try {
-    dispatch(fetchContactsRequest());
-
     await axios
       .get('/contacts')
       // console.log(response);

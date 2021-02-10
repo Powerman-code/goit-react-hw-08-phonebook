@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Container from '../../components/Container/Container';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import Filter from '../../components/Filter/Filter';
 import ContactList from '../../components/ContactList/ContactList';
+import s from './ContactsView.module.css';
 // import Container from '../components/Container';
 // import TodoList from '../components/TodoList';
 // import TodoEditor from '../components/TodoEditor';
