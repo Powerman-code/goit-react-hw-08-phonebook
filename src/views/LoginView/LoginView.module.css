@@ -1,0 +1,8 @@
+  form: {
+    width: 320,
+  },
+  label: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: 15,
+  }
