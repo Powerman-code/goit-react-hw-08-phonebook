@@ -23,7 +23,7 @@ export default function App() {
         <Route exact path="/" component={HomeView} />
         <Route path="/register" component={RegisterView} />
         <Route path="/login" component={LoginView} />
-        {/* <Route path="/todos" component={TodosView} /> */}
+        {/* <Route path="/contacts" component={ContactsView} /> */}
       </Switch>
     </Container>
   );

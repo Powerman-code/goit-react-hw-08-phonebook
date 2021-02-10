@@ -1,16 +1,23 @@
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // common - на все запросы.(можем поставить на post, get запросы)
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
+// Если б делали через фетч: fetch('url',{
+// опции
+// method: post;
+// header: {Authorization: `Bearer ${token}`}
+// })
 
 /*
  * POST @ /users/signup

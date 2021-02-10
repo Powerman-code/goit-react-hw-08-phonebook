@@ -5,16 +5,16 @@ import s from './Navigation.module.css';
 const Navigation = () => (
   <nav>
     <NavLink to="/" exact className={s.link} activeClassName={s.activeLink}>
-      Главная
+      Homepage
     </NavLink>
 
     <NavLink
-      to="/todos"
+      to="/contacts"
       exact
       className={s.link}
       activeClassName={s.activeLink}
     >
-      Заметки
+      Contacts
     </NavLink>
   </nav>
 );
