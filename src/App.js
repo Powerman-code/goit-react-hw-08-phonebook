@@ -1,21 +1,52 @@
-import { Component } from 'react';
-
-import s from './App.module.css';
-import ContactForm from './components/ContactForm/ContactForm';
-import Filter from './components/Filter/Filter';
-import ContactList from './components/ContactList/ContactList';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+import AppBar from './components/AppBar/AppBar';
+import HomeView from './views/HomeView/HomeView';
+import RegisterView from './views/RegisterView/RegisterView';
+import LoginView from './views/LoginView/LoginView';
+import Container from './components/Container/Container';
+import { authOperations } from './redux/auth';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch]);
+
   return (
-    <div className={s.container}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
+    <Container>
+      <AppBar />
+
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+        <Route path="/register" component={RegisterView} />
+        <Route path="/login" component={LoginView} />
+        {/* <Route path="/todos" component={TodosView} /> */}
+      </Switch>
+    </Container>
   );
 }
+
+// import { Component } from 'react';
+
+// import s from './App.module.css';
+// import ContactForm from './components/ContactForm/ContactForm';
+// import Filter from './components/Filter/Filter';
+// import ContactList from './components/ContactList/ContactList';
+
+// export default function App() {
+//   return (
+//     <div className={s.container}>
+//       <h1>Phonebook</h1>
+//       <ContactForm />
+//       <h2>Contacts</h2>
+//       <Filter />
+//       <ContactList />
+//     </div>
+//   );
+// }
 
 // OldRedux
 // import { Component } from 'react';
