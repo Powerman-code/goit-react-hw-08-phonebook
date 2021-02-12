@@ -71,26 +71,49 @@ const logOut = createAsyncThunk('auth/logout', async () => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
+
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
+    console.log(thunkAPI.getState());
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.token; //токен с прошлой сессии
+    console.log(token);
 
-    if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
+    if (!persistedToken) {
+      // если токена нет, выходим из fetchCurrentUser и возвращаем thunkAPI.rejectWithValue(); или state
       return thunkAPI.rejectWithValue();
     }
-
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      // доработать ошибку
     }
   },
 );
+
+// const fetchCurrentUser = createAsyncThunk(
+//   'auth/refresh',
+//   async (_, thunkAPI) => {
+//     const state = thunkAPI.getState();
+//     const persistedToken = state.auth.token;
+
+//     if (persistedToken === null) {
+//       console.log('Токена нет, уходим из fetchCurrentUser');
+//       return thunkAPI.rejectWithValue();
+//     }
+
+//     token.set(persistedToken);
+//     try {
+//       const { data } = await axios.get('/users/current');
+//       return data;
+//     } catch (error) {
+//       // TODO: Добавить обработку ошибки error.message
+//     }
+//   },
+// );
 
 const operations = {
   register,

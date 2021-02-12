@@ -11,6 +11,9 @@ import authOperations from './redux/auth/auth-operations';
 
 export default function App() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   // useEffect(() => {
   //   dispatch(authOperations.fetchCurrentUser());
