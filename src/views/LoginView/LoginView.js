@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import authSelectors from '../../redux/auth/auth-selectors';
 import s from './LoginView.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(authSelectors.getErrorLogin);
+  console.log(error);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -29,6 +32,7 @@ export default function LoginView() {
   return (
     <div>
       <h1>Login page</h1>
+      {error && <h2>{error}</h2>}
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>

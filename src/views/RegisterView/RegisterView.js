@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import authSelectors from '../../redux/auth/auth-selectors';
 import s from './RegisterView.module.css';
 
 export default function RegisterView() {
@@ -8,6 +9,7 @@ export default function RegisterView() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(authSelectors.getErrorRegister);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -33,6 +35,8 @@ export default function RegisterView() {
   return (
     <div>
       <h1>Register page</h1>
+
+      {error && <h2>{error}</h2>}
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>

@@ -30,7 +30,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+    throw new Error(error);
   }
 });
 
@@ -45,7 +45,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+    throw new Error(error);
   }
 });
 
@@ -89,31 +89,10 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      // доработать ошибку
+      throw new Error(error);
     }
   },
 );
-
-// const fetchCurrentUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {
-//       console.log('Токена нет, уходим из fetchCurrentUser');
-//       return thunkAPI.rejectWithValue();
-//     }
-
-//     token.set(persistedToken);
-//     try {
-//       const { data } = await axios.get('/users/current');
-//       return data;
-//     } catch (error) {
-//       // TODO: Добавить обработку ошибки error.message
-//     }
-//   },
-// );
 
 const operations = {
   register,

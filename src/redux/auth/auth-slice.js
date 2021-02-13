@@ -4,6 +4,8 @@ import authOperations from './auth-operations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  errorLogin: null,
+  errorRegister: null,
   isLoggedIn: false,
   IsFetchingCurrentUser: false,
 };
@@ -19,11 +21,25 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
 
+    [authOperations.register.rejected]: (state, action) => {
+      // state.error = action.error.message;
+      state.errorRegister = 'Registration error. Please try again';
+      console.log(action.errorRegister);
+    },
+
     [authOperations.logIn.fulfilled]: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+
+    [authOperations.logIn.rejected]: (state, action) => {
+      // state.error = action.error.message;
+      state.errorLogin =
+        'Login error. Please check email or password, and try again';
+      console.log(state.errorLogin);
+    },
+
     [authOperations.logOut.fulfilled]: (state, _) => {
       state.user = { name: null, email: null };
       state.token = null;
@@ -42,6 +58,8 @@ const authSlice = createSlice({
 
     [authOperations.fetchCurrentUser.rejected]: (state, action) => {
       state.IsFetchingCurrentUser = false;
+      state.error = action.error.message;
+      // console.log(action.payload);
     },
   },
 });
