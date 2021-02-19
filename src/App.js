@@ -12,11 +12,6 @@ import PrivateRoute from './components/PriveteRoute';
 import PublicRoute from './components/PublicRoute';
 import authSelectors from './redux/auth/auth-selectors';
 
-// const HomeView = lazy(() => import('./views/HomeView/HomeView'));
-// const RegisterView = lazy(() => import('./views/RegisterView/RegisterView'));
-// const LoginView = lazy(() => import('./views/LoginView/LoginView'));
-// const ContactsView = lazy(() => import('./views/ContactsView/ContactsView'));
-
 export default function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(
@@ -25,10 +20,6 @@ export default function App() {
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch]);
 
   return (
     !isFetchingCurrentUser && (

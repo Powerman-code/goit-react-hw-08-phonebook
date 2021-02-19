@@ -22,9 +22,8 @@ const authSlice = createSlice({
     },
 
     [authOperations.register.rejected]: (state, action) => {
-      // state.error = action.error.message;
       state.errorRegister = 'Registration error. Please try again';
-      console.log(action.errorRegister);
+      // console.log(action.errorRegister);
     },
 
     [authOperations.logIn.fulfilled]: (state, action) => {
@@ -34,7 +33,6 @@ const authSlice = createSlice({
     },
 
     [authOperations.logIn.rejected]: (state, action) => {
-      // state.error = action.error.message;
       state.errorLogin =
         'Login error. Please check email or password, and try again';
       console.log(state.errorLogin);
@@ -59,7 +57,6 @@ const authSlice = createSlice({
     [authOperations.fetchCurrentUser.rejected]: (state, action) => {
       state.IsFetchingCurrentUser = false;
       state.error = action.error.message;
-      // console.log(action.payload);
     },
   },
 });
